@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFS</title>
+</head>
+<body>
+   
+</body>
+<script>
+
+class Graph
+{
+	
+	constructor(v)
+	{
+		this.V = v;
+		this.adj = new Array(v);
+		for(let i = 0; i < v; i++)
+			this.adj[i] = [];
+	}
+	
+	Edge(v, w)
+	{
+		
+		this.adj[v].push(w);
+	}
+	
+	
+	DFS(v, visit)
+	{
+		
+		visit[v] = true;
+		document.write(v + " ");
+
+		for(let i of this.adj[v].values())
+		{
+			let n = i
+			if (!visit[n])
+				this.DFS(n, visit);
+		}
+	}
+	
+	
+	DFS(v)
+	{
+		
+		let visit= new Array(this.V);
+		for(let i = 0; i < this.V; i++)
+			visit[i] = false;
+
+		this.DFS(v, visit);
+	}
+}
+
+g = new Graph(7);
+g.Edge(0, 1);
+g.Edge(0, 2);
+g.Edge(1, 2);
+g.Edge(2, 0);
+g.DFS(2);
+</script>
+</html>
